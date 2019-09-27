@@ -59,4 +59,15 @@ we supply the **terraform.tfvars** structure
     domain="jenkins.your.domain"
 
 ```
- 
+
+In case you need to access to jenkins server for the first time you need to ssh into the droplet
+
+```
+   ssh -i mykey root@droplet_ip_address
+```
+
+Then you can get the jenkins access key login into the container
+
+```
+   docker logs -f jenkins
+```
