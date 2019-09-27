@@ -1,0 +1,7 @@
+.git
+mykey
+mykey.pub
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfvars

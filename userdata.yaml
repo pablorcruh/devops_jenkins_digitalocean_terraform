@@ -1,0 +1,9 @@
+#cloud-config
+package_update: true
+packages:
+  - docker.io
+  - git
+runcmd:
+  - sudo apt install -y docker-compose
+  - cd /home
+  - docker-compose up -d
