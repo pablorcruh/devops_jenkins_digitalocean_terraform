@@ -1,4 +1,4 @@
-resource "digitalocean_droplet" "example" {
+resource "digitalocean_droplet" "jenkins" {
 	image = "ubuntu-18-04-x64"
 	name = "example"
 	region = "nyc1"
@@ -9,7 +9,7 @@ resource "digitalocean_droplet" "example" {
 
     connection {
         type = "ssh"
-        host = "${digitalocean_droplet.example.ipv4_address}"
+        host = "${digitalocean_droplet.jenkins.ipv4_address}"
         private_key = "${file("mykey")}"
         port = 22
         timeout = "3m"
@@ -32,5 +32,5 @@ resource "digitalocean_droplet" "example" {
 }
 
 output "ip" {
-    value = "${digitalocean_droplet.example.ipv4_address}"
+    value = "${digitalocean_droplet.jenkins.ipv4_address}"
 }

@@ -22,7 +22,8 @@ The provision makes an ssh connection and create a directory and move some files
 everything.
 
 The project has the following files
-
+* dns.tf -> has digitalocean dns record
+* docker-compose.yml -> has the jenkins container configuration
 * droplet.tf -> has all the droplet configuration to be deployed
 * mykey -> private key 
 * mykey.pub -> public key
