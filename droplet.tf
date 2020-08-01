@@ -4,13 +4,13 @@ resource "digitalocean_droplet" "jenkins" {
 	region = "nyc1"
 	size = "1gb"
 	private_networking = true
-	user_data = "${file("userdata.yaml")}"
-	ssh_keys = ["${digitalocean_ssh_key.pablo.fingerprint}"]
+	user_data = file("userdata.yaml")
+	ssh_keys = [digitalocean_ssh_key.pablo.fingerprint]
 
     connection {
         type = "ssh"
-        host = "${digitalocean_droplet.jenkins.ipv4_address}"
-        private_key = "${file("mykey")}"
+        host = digitalocean_droplet.jenkins.ipv4_address
+        private_key = file("./server_keys/id_rsa")
         port = 22
         timeout = "3m"
         user = "root"
@@ -32,5 +32,5 @@ resource "digitalocean_droplet" "jenkins" {
 }
 
 output "ip" {
-    value = "${digitalocean_droplet.jenkins.ipv4_address}"
+    value = digitalocean_droplet.jenkins.ipv4_address
 }

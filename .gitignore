@@ -1,5 +1,4 @@
-mykey
-mykey.pub
+server_keys
 .terraform/
 terraform.tfstate
 terraform.tfstate.backup

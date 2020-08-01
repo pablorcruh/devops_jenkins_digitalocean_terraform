@@ -13,22 +13,27 @@ This is infrastructure as code, we have all the configuration that we need on
 a repository and we always be able to keep track of any changes, making this process repeatable 
 with the same outcome every time.
 
-We need and ssh key to access droplet within our project, so we generate one
+We need and ssh key to access droplet within our project, so we create a folder for all keys, we create new keys so we don't override our ssh keys on our machine.
 
 ```
-    ssh-keygen -f mykey
+    mkdir server_keys
+    ssh-keygen -b 4096
+    Generating public/private rsa key pair.
+    Enter file in which to save the key (/path/to/.ssh/id_rsa): /path/to/project/server_keys/id_rsa
+    Enter passphrase (empty for no passphrase): 
+    Enter same passphrase again: 
+    Your identification has been saved in /path/to/project/devops_jenkins_digitalocean_terraform/server_keys/id_rsa.
 ```
 The provision makes an ssh connection and create a directory and move some files to setup 
 everything.
 
-The project has the following files
-* dns.tf -> has digitalocean dns record
-* docker-compose.yml -> has the jenkins container configuration
-* droplet.tf -> has all the droplet configuration to be deployed
-* mykey -> private key 
-* mykey.pub -> public key
-* provider.tf -> has all the provider configuration to be used
-* ssh_key.tf -> has public key configuration to be passed to the droplet
+The project has the following files.
+* dns.tf -> has digitalocean dns record.
+* docker-compose.yml -> has the jenkins container configuration.
+* droplet.tf -> has all the droplet configuration to be deployed.
+* server_keys -> folder with private key and public key. 
+* provider.tf -> has all the provider configuration to be used.
+* ssh_key.tf -> has public key configuration to be passed to the droplet.
 * terraform.tfvars -> has the DigitalOcean API key, file never uploaded to the repository
 * userdata.yaml -> has all software provisioning inside the droplet and executes some commands
 
@@ -59,6 +64,7 @@ we supply the **terraform.tfvars** structure
     domain="jenkins.your.domain"
 
 ```
+We specify the path to the project so terraform can locate the docker-compose file.
 
 In case you need to access to jenkins server for the first time you need to ssh into the droplet
 
