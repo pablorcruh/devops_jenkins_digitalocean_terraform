@@ -69,11 +69,11 @@ We specify the path to the project so terraform can locate the docker-compose fi
 In case you need to access to jenkins server for the first time you need to ssh into the droplet
 
 ```
-   ssh -i mykey root@droplet_ip_address
+   ssh root@droplet_ip_address -i server_keys/id_rsa
 ```
 
 Then you can get the jenkins access key login into the container
 
 ```
-   docker logs -f jenkins
+   docker-compose logs -f jenkins
 ```
