@@ -62,6 +62,8 @@ To finish we apply all the changes on our infrastructure as we planned
 In case you need to understand the variables used in the configuration 
 we supply the **terraform.tfvars** structure
 
+We need to create a file called terrafomr.tfvars with the following structure
+
 ```
     do_token="DIGITAL_OCEAN_API_KEY"
     file_path="file/path/from/source/project"
