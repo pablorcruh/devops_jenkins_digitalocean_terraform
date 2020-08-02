@@ -94,8 +94,8 @@ In case you need to access to jenkins server for the first time you need to ssh 
    ssh root@droplet_ip_address -i server_keys/id_rsa
 ```
 
-Then you can get the jenkins access key login into the container
+Then you can get the jenkins access key login into the container and start installation
 
 ```
-   docker-compose logs -f jenkins
+   docker logs -f jenkins
 ```
