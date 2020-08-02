@@ -15,9 +15,13 @@ with the same outcome every time.
 
 We need and ssh key to access droplet within our project, so we create a folder for all keys, we create new keys so we don't override our ssh keys on our machine.
 
+On the root of the project we create a folder and generate the ssh keys
+
 ```
     mkdir server_keys
     ssh-keygen -b 4096
+    
+    
     Generating public/private rsa key pair.
     Enter file in which to save the key (/path/to/.ssh/id_rsa): /path/to/project/server_keys/id_rsa
     Enter passphrase (empty for no passphrase): 
