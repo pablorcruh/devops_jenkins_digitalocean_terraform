@@ -5,7 +5,7 @@ resource "digitalocean_droplet" "jenkins" {
 	size = "1gb"
 	private_networking = true
 	user_data = file("userdata.yaml")
-	ssh_keys = [digitalocean_ssh_key.pablo.fingerprint]
+	ssh_keys = [digitalocean_ssh_key.key.fingerprint]
 
     connection {
         type = "ssh"
