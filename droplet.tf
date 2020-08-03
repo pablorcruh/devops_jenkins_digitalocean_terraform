@@ -1,6 +1,6 @@
 resource "digitalocean_droplet" "jenkins" {
 	image = "ubuntu-18-04-x64"
-	name = "example"
+	name = "ServerJenkins"
 	region = "nyc1"
 	size = "1gb"
 	private_networking = true
@@ -19,6 +19,11 @@ resource "digitalocean_droplet" "jenkins" {
 	provisioner "file" {
         source = "${var.file_path}/docker-compose.yml"
         destination = "/home/docker-compose.yml"
+    }
+
+  provisioner "file" {
+        source = "${var.file_path}/docker"
+        destination = "/home/docker"
     }
 
     provisioner "remote-exec" {

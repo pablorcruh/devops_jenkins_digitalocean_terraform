@@ -94,6 +94,11 @@ In case you need to access to jenkins server for the first time you need to ssh 
    ssh root@droplet_ip_address -i server_keys/id_rsa
 ```
 
+## Note
+
+The installation and setup of the jenkins and nginx container will take about 10 minutes to everything
+will be up and running.
+
 Then you can get the jenkins access key login into the container and start installation
 
 ```

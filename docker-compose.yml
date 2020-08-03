@@ -16,6 +16,8 @@ services:
         - "nginx-vhost:/etc/nginx/vhost.d"
         - "html:/usr/share/nginx/html"
         - "certs:/etc/nginx/certs:ro"
+      depends_on:
+        - jenkins
   
   letsencrypt-nginx-proxy-companion:
       image: jrcs/letsencrypt-nginx-proxy-companion
@@ -32,17 +34,19 @@ services:
 
   jenkins:
     container_name: jenkins
+    build:
+      context: docker
     restart: unless-stopped
-    image: jenkins/jenkins
     expose:
       - "8080"
     environment:
       - VIRTUAL_HOST=jenkins.your.domain.com
       - VIRTUAL_PORT=8080
       - LETSENCRYPT_HOST=jenkins.your.domain.com
-      - LETSENCRYPT_EMAIL=support@emial.com
+      - LETSENCRYPT_EMAIL=support@email.com
     volumes:
       - "/home/jenkins_home:/var/jenkins_home"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
     networks:
       - nginx-proxy
 
