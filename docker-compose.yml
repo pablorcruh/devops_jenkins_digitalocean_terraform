@@ -33,17 +33,16 @@ services:
           - nginx-proxy
 
   jenkins:
+    image: pablorcruh/docker_on_jenkins:1.1
     container_name: jenkins
-    build:
-      context: docker
     restart: unless-stopped
     expose:
       - "8080"
     environment:
-      - VIRTUAL_HOST=jenkins.your.domain.com
+      - VIRTUAL_HOST=jenkins.cicd.pablo-cruz.com
       - VIRTUAL_PORT=8080
-      - LETSENCRYPT_HOST=jenkins.your.domain.com
-      - LETSENCRYPT_EMAIL=support@email.com
+      - LETSENCRYPT_HOST=jenkins.cicd.pablo-cruz.com
+      - LETSENCRYPT_EMAIL=pablorcruh@gmail.com
     volumes:
       - "/home/jenkins_home:/var/jenkins_home"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"

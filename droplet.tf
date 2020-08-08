@@ -21,11 +21,6 @@ resource "digitalocean_droplet" "jenkins" {
         destination = "/home/docker-compose.yml"
     }
 
-  provisioner "file" {
-        source = "${var.file_path}/docker"
-        destination = "/home/docker"
-    }
-
     provisioner "remote-exec" {
       inline = [
         "cd /home",
