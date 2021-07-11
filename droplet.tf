@@ -2,7 +2,7 @@ resource "digitalocean_droplet" "jenkins" {
 	image = "ubuntu-18-04-x64"
 	name = "ServerJenkins"
 	region = "nyc1"
-	size = "1gb"
+	size = "s-1vcpu-1gb"
 	private_networking = true
 	user_data = file("userdata.yaml")
 	ssh_keys = [digitalocean_ssh_key.key.fingerprint]
